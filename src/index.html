@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+  </head>
+  <body id="root">
+    <section id="tasks-section">
+      <header>
+        <h1>Tasks</h1>
+      </header>
+
+      <div id="tasks-container">
+        <div class="task">
+          <p class="task-title">Declutter desk and organize drawers</p>
+          <p class="task-due-date">15 January 2024 10:00 AM</p>
+        </div>
+        <div class="task">
+          <p class="task-title">Declutter desk and organize drawers</p>
+          <p class="task-due-date">15 January 2024 10:00 AM</p>
+        </div>
+        <div class="task">
+          <p class="task-title">Declutter desk and organize drawers</p>
+          <p class="task-due-date">15 January 2024 10:00 AM</p>
+        </div>
+        <div class="task">
+          <p class="task-title">Declutter desk and organize drawers</p>
+          <p class="task-due-date">15 January 2024 10:00 AM</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="modal add-task hidden">
+      <div class="flex">
+        <p>New Task</p>
+        <button class="btn-close">
+          <span class="iconify" data-icon="material-symbols:close"></span>
+        </button>
+      </div>
+      <div class="container">
+        <label for="title" req>Title</label>
+        <input id="title" type="text" />
+        <label for="description">Description</label>
+        <input id="description" type="text" />
+        <label for="due-date">Due date</label>
+        <input id="due-date" type="date" />
+      </div>
+
+      <div class="input-error hidden"></div>
+      <input type="submit" value="Create" />
+    </section>
+
+    <div class="overlay hidden"></div>
+    <button class="btn btn-open btn-add-task">+</button>
+  </body>
+</html>
