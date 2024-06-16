@@ -69,6 +69,15 @@ body {
 header {
   font-weight: bolder;
   margin-block: 2rem;
+  display: flex ;
+}
+
+header .container{
+  margin-left: auto ;
+}
+
+header .container p {
+  text-align: center;
 }
 
 #tasks-container {
@@ -127,3 +136,22 @@ input[type="submit"] {
   border-style: none;
   border-radius: .5rem;
 }
+
+.custom-select {
+  min-width: 350px;
+  position: relative;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.675em 2em 0.675em 1em;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
+
+
+

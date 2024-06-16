@@ -1,22 +1,31 @@
+import Project from "./Project";
+
 export default class TodoList {
+  #projects;
+
   constructor() {
-    this.todos = [];
+    this.#projects = [];
   }
 
-  addTodo(todo) {
-    this.todos.push(project);
+  addProject(name) {
+    const project = new Project(name);
+    this.#projects.push(project);
   }
 
-  removeTodo(index) {
-    this.todos.splice(index, 1);
+  removeProject(index) {
+    this.#projects.splice(index, 1);
   }
 
-  getTodo(index) {
-    const todos = this.todos[index];
-    if (todos === undefined) {
+  getProject(index) {
+    const project = this.#projects[index];
+    if (project === undefined) {
       throw new Error("Project not found.");
     }
 
     return project;
+  }
+
+  getAllProjects() {
+    return [...this.#projects];
   }
 }

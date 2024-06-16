@@ -9,26 +9,17 @@
     <section id="tasks-section">
       <header>
         <h1>Tasks</h1>
+        <div class="container">
+          <p>Project</p>
+          <select name="select-projects" id="select-projects">
+            <option value="all">All</option>
+            <option value="0" selected>Default</option>
+            <option value="1">School</option>
+          </select>
+        </div>
       </header>
 
-      <div id="tasks-container">
-        <div class="task">
-          <p class="task-title">Declutter desk and organize drawers</p>
-          <p class="task-due-date">15 January 2024 10:00 AM</p>
-        </div>
-        <div class="task">
-          <p class="task-title">Declutter desk and organize drawers</p>
-          <p class="task-due-date">15 January 2024 10:00 AM</p>
-        </div>
-        <div class="task">
-          <p class="task-title">Declutter desk and organize drawers</p>
-          <p class="task-due-date">15 January 2024 10:00 AM</p>
-        </div>
-        <div class="task">
-          <p class="task-title">Declutter desk and organize drawers</p>
-          <p class="task-due-date">15 January 2024 10:00 AM</p>
-        </div>
-      </div>
+      <div id="tasks-container"></div>
     </section>
 
     <section class="modal add-task hidden">
@@ -39,12 +30,18 @@
         </button>
       </div>
       <div class="container">
-        <label for="title" req>Title</label>
+        <label for="title">Title</label>
         <input id="title" type="text" />
         <label for="description">Description</label>
         <input id="description" type="text" />
         <label for="due-date">Due date</label>
         <input id="due-date" type="date" />
+        <label for="priority">Priority</label>
+        <select name="priority" id="priority">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
       </div>
 
       <div class="input-error hidden"></div>
