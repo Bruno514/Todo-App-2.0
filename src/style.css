@@ -96,6 +96,10 @@ header .container p {
   margin-bottom: 2rem;
 }
 
+.task input {
+  display: block;
+}
+
 .task-due-date {
   color: gray;
   font-size: 0.8rem;

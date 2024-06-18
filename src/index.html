@@ -22,6 +22,32 @@
       <div id="tasks-container"></div>
     </section>
 
+    <section class="modal edit-task hidden">
+      <div class="flex">
+        <p>Edit Task</p>
+        <button class="btn-close">
+          <span class="iconify" data-icon="material-symbols:close"></span>
+        </button>
+      </div>
+      <div class="container">
+        <label for="title">Title</label>
+        <input id="title" type="text" />
+        <label for="description">Description</label>
+        <input id="description" type="text" />
+        <label for="due-date">Due date</label>
+        <input id="due-date" type="date" />
+        <label for="priority">Priority</label>
+        <select name="priority" id="priority">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+
+      <div class="input-error hidden"></div>
+      <input type="submit" value="Done" />
+    </section>
+
     <section class="modal add-task hidden">
       <div class="flex">
         <p>New Task</p>
