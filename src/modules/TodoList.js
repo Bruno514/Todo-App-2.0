@@ -12,20 +12,35 @@ export default class TodoList {
     this.#projects.push(project);
   }
 
-  removeProject(index) {
-    this.#projects.splice(index, 1);
+  removeProject(name) {
+    for (const index in this.#projects) {
+      if (this.#projects[index].name === "name") {
+        this.#projects.splice(index, 1);
+      }
+    }
   }
 
-  getProject(index) {
-    const project = this.#projects[index];
-    if (project === undefined) {
-      throw new Error("Project not found.");
+  getProject(name) {
+    for (const index in this.#projects) {
+      if (name === this.#projects[index].name) {
+        return this.#projects[index];
+      }
     }
 
-    return project;
+    throw new Error("Project not found.");
   }
 
   getAllProjects() {
     return [...this.#projects];
+  }
+
+  getAllTasks() {
+    let tasks = [];
+    this.#projects.forEach((element) => {
+      const projectTasks = element.getAllTasks();
+      tasks = [...tasks, ...projectTasks];
+    });
+
+    return tasks;
   }
 }

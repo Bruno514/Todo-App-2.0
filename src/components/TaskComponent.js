@@ -5,6 +5,9 @@ export default function getTaskComponent(task) {
     <p class="task-title">${task.title}</p>
     <p class="task-due-date">${task.dueDate}</p>
     <div class="container">
+      <button class="complete">
+        <span class="iconify" data-icon="cil:check-alt"></span>
+      </button>
       <button class="edit">
         <span class="iconify" data-icon="cil:pencil"></span>
       </button>

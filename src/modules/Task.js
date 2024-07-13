@@ -5,5 +5,6 @@ export default class Task {
     this.dueDate = dueDate;
     this.priority = priority;
     this.completed = false;
+    this.project = undefined;
   }
 }

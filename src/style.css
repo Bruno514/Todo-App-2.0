@@ -77,19 +77,23 @@ header .container{
 }
 
 header .container p {
-  text-align: center;
+  margin-left: 1rem;
 }
 
-#tasks-container {
+.tasks-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .task {
   border-radius: .5rem;
   padding: 1.8rem;
   border: 1px solid gray;
+}
+.task:hover, .task:active {
+  background-color: #eef;
 }
 
 .task p:first-child {
@@ -105,6 +109,10 @@ header .container p {
   font-size: 0.8rem;
 }
 
+.task-project {
+  padding-top: 1rem;
+}
+
 .btn-add-task {
   position: fixed;
   border-radius: .5rem;
@@ -116,6 +124,9 @@ header .container p {
   border-style: none;
   top: 90%;
   right: 5%;
+}
+.btn-add-task:hover, .btn-add-task:active {
+  background-color: cadetblue;
 }
 
 .btn-close {
@@ -156,6 +167,29 @@ select {
   color: #000;
   cursor: pointer;
 }
+#select-projects {
+  padding-inline: 1rem;
+}
 
+.delete {
+  color: darkred;
+}
 
+.complete {
+  color: green;
+  margin-left: auto;
+}
 
+button {
+  padding: .3rem;
+  border: 1px solid ghostwhite;
+  border-radius: 2rem;
+}
+
+button:hover, button:active{
+  background-color: whitesmoke;
+}
+
+.modal.info-task label {
+  font-weight: bold;
+}
