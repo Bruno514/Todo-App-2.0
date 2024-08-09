@@ -13,7 +13,7 @@
 
 body {
   padding: 2rem;
-  margin: 0 auto; 
+  margin: 0 auto;
   max-width: 1200px;
 }
 
@@ -69,11 +69,11 @@ body {
 header {
   font-weight: bolder;
   margin-block: 2rem;
-  display: flex ;
+  display: flex;
 }
 
-header .container{
-  margin-left: auto ;
+header .container {
+  margin-left: auto;
 }
 
 header .container p {
@@ -88,11 +88,12 @@ header .container p {
 }
 
 .task {
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding: 1.8rem;
   border: 1px solid gray;
 }
-.task:hover, .task:active {
+.task:hover,
+.task:active {
   background-color: #eef;
 }
 
@@ -115,17 +116,18 @@ header .container p {
 
 .btn-add-task {
   position: fixed;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   color: white;
   font-size: 4rem;
   line-height: 2.5rem;
-  padding: .2rem;
+  padding: 0.2rem;
   background-color: black;
   border-style: none;
   top: 90%;
   right: 5%;
 }
-.btn-add-task:hover, .btn-add-task:active {
+.btn-add-task:hover,
+.btn-add-task:active {
   background-color: cadetblue;
 }
 
@@ -135,7 +137,8 @@ header .container p {
   font-size: 1.3rem;
   border-style: none;
 }
-.btn-close:hover, .btn-close:active{
+.btn-close:hover,
+.btn-close:active {
   background-color: peachpuff;
 }
 
@@ -145,11 +148,11 @@ input#description {
 
 input[type="submit"] {
   margin-top: 1rem;
-  padding-block: .5rem;
+  padding-block: 0.5rem;
   background-color: black;
   color: white;
   border-style: none;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .custom-select {
@@ -181,12 +184,13 @@ select {
 }
 
 button {
-  padding: .3rem;
+  padding: 0.3rem;
   border: 1px solid ghostwhite;
   border-radius: 2rem;
 }
 
-button:hover, button:active{
+button:hover,
+button:active {
   background-color: whitesmoke;
 }
 

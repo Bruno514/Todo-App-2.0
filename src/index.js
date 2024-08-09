@@ -4,18 +4,29 @@ import TodoList from "./modules/TodoList.js";
 import getTaskComponent from "./components/TaskComponent.js";
 
 const todoList = new TodoList();
-let selectedProject = "All";
+let selectedProject = "Default";
 
 todoList.addProject("Default");
 
 const projectSelectElement = document.querySelector("#select-projects");
 
-todoList.getAllProjects().forEach((element) => {
+function updateProjects() {
+  projectSelectElement.innerHTML = "";
+
   const optionElement = document.createElement("option");
-  optionElement.value = element.name;
-  optionElement.textContent = element.name;
+  optionElement.value = "All";
+  optionElement.textContent = "All";
   projectSelectElement.appendChild(optionElement);
-});
+
+  todoList.getAllProjects().forEach((element) => {
+    const optionElement = document.createElement("option");
+    optionElement.value = element.name;
+    optionElement.textContent = element.name;
+    projectSelectElement.appendChild(optionElement);
+  });
+}
+
+updateProjects();
 
 function renderTasks() {
   let project = undefined;
@@ -52,12 +63,15 @@ function renderTasks() {
         const overlay = document.querySelector(".overlay");
         infoModal.classList.remove("hidden");
         overlay.classList.remove("hidden");
-        infoModal.querySelector(".task-title").textContent = task.title;
-        infoModal.querySelector(".task-description").textContent =
+        infoModal.querySelector(".info-task-title").textContent = task.title;
+        infoModal.querySelector(".info-task-description").textContent =
           task.description;
-        infoModal.querySelector(".task-duedate").textContent = task.dueDate;
-        infoModal.querySelector(".task-priority").textContent = task.priority;
-        infoModal.querySelector(".task-project").textContent = task.project;
+        infoModal.querySelector(".info-task-duedate").textContent =
+          task.dueDate;
+        infoModal.querySelector(".info-task-priority").textContent =
+          task.priority;
+        infoModal.querySelector(".info-task-project").textContent =
+          task.project;
       }
     });
 
@@ -101,10 +115,14 @@ function renderTasks() {
     });
 
     deleteButton.addEventListener("click", () => {
-      const taskIndex = tasks.indexOf(task);
+      let taskIndex = tasks.indexOf(task);
+
       if (selectedProject === "All") {
         project = todoList.getProject(task.project);
+        const projectTasks = project.getAllTasks();
+        taskIndex = projectTasks.indexOf(task);
       }
+
       project.removeTask(taskIndex);
       renderTasks();
     });
@@ -156,22 +174,41 @@ function addEventListeners() {
     projectSelectOption.value = projectTitle;
     projectSelectOption.textContent = projectTitle;
     projectSelectElement.append(projectSelectOption);
-    projectSelectElement.selectedIndex =
-      projectSelectElement.childNodes.length - 3;
-    console.log(projectSelectElement.childNodes.length - 3);
 
     todoList.addProject(projectTitle);
+    updateProjects();
+
+    projectSelectElement.selectedIndex =
+      projectSelectElement.childNodes.length - 1;
+
+    selectedProject = projectSelectElement.value;
+
+    // Activate add task button 
+    const addTaskButton = document.querySelector("button.btn-add-task");
+    addTaskButton.classList.remove("hidden");
+
     renderTasks();
 
     projectModal.classList.add("hidden");
     overlay.classList.add("hidden");
   });
 
+  const addProjectModalDelete = document.querySelector("button.delete-project");
+  addProjectModalDelete.addEventListener("click", () => {
+    todoList.removeProject(selectedProject);
+    updateProjects();
+
+    projectSelectElement.selectedIndex =
+      projectSelectElement.childNodes.length - 1;
+
+    selectedProject = projectSelectElement.value;
+    renderTasks();
+  });
+
   document
     .querySelector("button.delete-project")
     .addEventListener("click", () => {
-      todoList.removeProject(selectedProject)
-      console.log(todoList.getAllProjects())
+      todoList.removeProject(selectedProject);
     });
 
   // Add task modal button open
@@ -231,10 +268,6 @@ function addEventListeners() {
 
     taskModal.classList.toggle("hidden");
     overlay.classList.toggle("hidden");
-
-    // Debugging
-    const tasks = project.getAllTasks();
-    console.log(tasks);
   });
 
   const taskInfoClose = document.querySelector(".modal.info-task .btn-close");
@@ -249,6 +282,13 @@ function addEventListeners() {
   const projectSelectElement = document.querySelector("#select-projects");
   projectSelectElement.addEventListener("change", (event) => {
     selectedProject = event.target.value;
+
+    const addTaskButton = document.querySelector("button.btn-add-task");
+    addTaskButton.classList.remove("hidden");
+    if (selectedProject === "All") {
+      addTaskButton.classList.add("hidden");
+    }
+
     renderTasks();
   });
 }

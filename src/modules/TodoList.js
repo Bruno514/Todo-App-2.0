@@ -14,10 +14,14 @@ export default class TodoList {
 
   removeProject(name) {
     for (const index in this.#projects) {
-      if (this.#projects[index].name === "name") {
+      if (this.#projects[index].name === name) {
         this.#projects.splice(index, 1);
+
+        return true;
       }
     }
+
+    return false;
   }
 
   getProject(name) {
