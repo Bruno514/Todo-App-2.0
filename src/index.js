@@ -3,11 +3,14 @@ import "./style.css";
 import TodoList from "./modules/TodoList.js";
 import getTaskComponent from "./components/TaskComponent.js";
 
-const todoList = new TodoList();
-let selectedProject = "Default";
+import { saveTasks, loadTasks } from "./modules/Storage.js";
 
-todoList.addProject("Default");
+let todoList = loadTasks();
 
+let selectedProject = "All";
+
+saveTasks(todoList);
+renderTasks();
 const projectSelectElement = document.querySelector("#select-projects");
 
 function updateProjects() {
@@ -87,6 +90,7 @@ function renderTasks() {
 
     completeButton.addEventListener("click", () => {
       task.completed = !task.completed;
+      saveTasks(todoList);
       renderTasks();
     });
 
@@ -110,6 +114,7 @@ function renderTasks() {
         task.priority = editTaskModal.querySelector("#priority").value;
         editTaskModal.classList.add("hidden");
         overlay.classList.add("hidden");
+        saveTasks(todoList);
         renderTasks();
       });
     });
@@ -124,6 +129,7 @@ function renderTasks() {
       }
 
       project.removeTask(taskIndex);
+      saveTasks(todoList);
       renderTasks();
     });
   });
@@ -183,10 +189,11 @@ function addEventListeners() {
 
     selectedProject = projectSelectElement.value;
 
-    // Activate add task button 
+    // Activate add task button
     const addTaskButton = document.querySelector("button.btn-add-task");
     addTaskButton.classList.remove("hidden");
 
+    saveTasks(todoList);
     renderTasks();
 
     projectModal.classList.add("hidden");
@@ -202,6 +209,7 @@ function addEventListeners() {
       projectSelectElement.childNodes.length - 1;
 
     selectedProject = projectSelectElement.value;
+    saveTasks(todoList);
     renderTasks();
   });
 
@@ -261,6 +269,7 @@ function addEventListeners() {
     const priority = document.querySelector(".modal.add-task #priority").value;
 
     project.addTask(title, description, dueDate, priority);
+    saveTasks(todoList);
     renderTasks();
 
     const taskModal = document.querySelector(".modal.add-task");
@@ -289,6 +298,7 @@ function addEventListeners() {
       addTaskButton.classList.add("hidden");
     }
 
+    saveTasks(todoList);
     renderTasks();
   });
 }

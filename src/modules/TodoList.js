@@ -47,4 +47,18 @@ export default class TodoList {
 
     return tasks;
   }
+
+  toJSON() {
+    const projects = this.getAllProjects();
+    const data = [];
+
+    projects.forEach((project) => {
+      const name = project.name;
+      const tasks = project.getAllTasks();
+
+      data.push({ name: name, tasks: tasks });
+    });
+
+    return data;
+  }
 }
