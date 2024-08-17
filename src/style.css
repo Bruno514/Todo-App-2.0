@@ -197,3 +197,13 @@ button:active {
 .modal.info-task label {
   font-weight: bold;
 }
+
+.modal.info-task .container p {
+  padding: .5rem;
+  border: 1px solid #555;
+  border-radius: .2rem;
+}
+
+p.info-task-description {
+  line-break: anywhere;
+}

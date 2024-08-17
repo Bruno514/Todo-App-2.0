@@ -53,7 +53,7 @@ function renderTasks() {
   tasks.forEach((task) => {
     const taskElement = getTaskComponent(task);
     if (selectedProject === "All") {
-      const projectElement = document.createElement("p");
+      const projectElement = document.createElement("u");
       projectElement.textContent = task.project;
       taskElement.appendChild(projectElement);
       projectElement.classList.add("task-project");
